@@ -1,2 +1,2 @@
 server:
-  port: ${caja-service.port}
+  port: 8084
