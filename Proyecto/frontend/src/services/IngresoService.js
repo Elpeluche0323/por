@@ -3,11 +3,11 @@ import axios from 'axios';
 class IngresoService {
 
     createIngreso(ingreso){
-        return axios.post("http://localhost:8082/ingreso", ingreso);
+        return axios.post("http://localhost:8080/ingreso", ingreso);
     }
 
     getIngreso(){
-        return axios.get("http://localhost:8082/ingreso/lista-ingreso");
+        return axios.get("http://localhost:8080/ingreso/lista-ingreso");
     }
 
 }
