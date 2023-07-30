@@ -1,6 +1,15 @@
 server:
   port: 8081
 
+ingreso-service:
+  port: 8082
+
+salida-service:
+  port: 8083
+
+caja-service:
+  port: 8084
+
 spring:
   cloud:
     config:
