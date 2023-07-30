@@ -6,7 +6,6 @@ import por.cajaservice.entities.CajaEntity;
 import por.cajaservice.repositories.CajaRepository;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CajaService {
@@ -18,11 +17,5 @@ public class CajaService {
         return (ArrayList<CajaEntity>) cajaRepository.findAll();
     }
 
-    public List<CajaEntity> obtenerIngreso(){return cajaRepository.obtenerIngreso();}
-
-    public List<CajaEntity> obtenerSalida(){return cajaRepository.obtenerSalida();}
-
-    public void guardarIngreso(CajaEntity caja){cajaRepository.save(caja);}
-
-    public void guardarSalida(CajaEntity caja){cajaRepository.save(caja);}
+    public void guardarCaja(CajaEntity caja){cajaRepository.save(caja);}
 }

@@ -12,31 +12,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/caja")
 public class CajaController {
-
     @Autowired
     CajaService cajaService;
 
-    @GetMapping("/ingreso")
-    public List<CajaEntity> obtenerIngreso(){return cajaService.obtenerIngreso();}
+    @GetMapping("/nuevo-caja")
+    public String caja(){return "/nuevo-caja";}
 
-    @GetMapping("/salida")
-    public List<CajaEntity> obtenerSalida(){return cajaService.obtenerSalida();}
-
-    /**
-    @GetMapping("/nueva-ingreso")
-    public String ingreso(){return "/nuevo-ingreso";}
-
-    @GetMapping("/nueva-salida")
-    public String salida(){return "/nuevo-salida";}
-     **/
-
-
-
-    @PostMapping("/nuevo-ingreso")
-    public void guardarIngreso(@RequestBody CajaEntity caja){ cajaService.guardarIngreso(caja);}
-
-    @PostMapping("/nuevo-salida")
-    public void guardarSalida(@RequestBody CajaEntity caja){ cajaService.guardarSalida(caja);}
+    @PostMapping
+    public void guardarCaja(@RequestBody CajaEntity caja){cajaService.guardarCaja(caja);}
 
     @GetMapping("/lista-caja")
     public ResponseEntity<List<CajaEntity>> obtenerCaja(){

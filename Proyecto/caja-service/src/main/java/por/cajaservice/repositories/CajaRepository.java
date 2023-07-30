@@ -9,10 +9,4 @@ import java.util.List;
 
 @Repository
 public interface CajaRepository extends JpaRepository<CajaEntity, Integer> {
-
-    @Query("SELECT p FROM  CajaEntity  p WHERE p.ingreso IS NOT NULL")
-    List<CajaEntity> obtenerIngreso();
-
-    @Query("SELECT p FROM  CajaEntity  p WHERE p.salida IS NOT NULL")
-    List<CajaEntity> obtenerSalida();
 }
