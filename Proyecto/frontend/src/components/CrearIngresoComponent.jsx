@@ -9,6 +9,7 @@ import swal from 'sweetalert';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { format } from 'date-fns';
+import CajaService from "../services/CajaService";
 
 export default function CrearIngresoComponent(props){
 
@@ -56,6 +57,10 @@ export default function CrearIngresoComponent(props){
                 console.log(input.ingreso)
                 console.log("ingreso => " + JSON.stringify(ingreso));
                 IngresoService.createIngreso(ingreso).then(
+                    (res) => {
+                    }
+                  );
+                CajaService.createCaja(ingreso).then(
                     (res) => {
                     }
                   );

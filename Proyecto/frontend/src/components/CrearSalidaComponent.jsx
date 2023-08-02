@@ -9,6 +9,7 @@ import SalidaService from "../services/SalidaService";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { format } from 'date-fns';
+import CajaService from "../services/CajaService";
 
 export default function CrearSalidaComponent(props){
 
@@ -63,6 +64,10 @@ export default function CrearSalidaComponent(props){
                 console.log(input.salida)
                 console.log("salida => " + JSON.stringify(salida));
                 SalidaService.createSalida(salida).then(
+                    (res) => {
+                    }
+                  );
+                CajaService.createCaja2(salida).then(
                     (res) => {
                     }
                   );

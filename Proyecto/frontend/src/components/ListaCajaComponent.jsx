@@ -18,13 +18,19 @@ class ListaCajaComponent extends Component{
         });
     }
 
+    formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const formattedDate = date.toLocaleDateString('en-CA');
+        return formattedDate.replace(/-/g, '/'); 
+    };
+
     render(){
         return(
             
             <div className="home">
                 <NavbarComponent4 />
                 <Styles>
-                <h1 className="text-center"> <b>Gestión de salida de dinero</b></h1>
+                <h1 className="text-center"> <b>Resumen de movimientos</b></h1>
                     <div className="f">
 
                         <table border="1" class="content-table">
@@ -44,7 +50,7 @@ class ListaCajaComponent extends Component{
                                 {this.state.data.map((data) => (
                                     <tr key={data.id}>
                                         <td>{data.id}</td>
-                                        <td>{data.fecha}</td>
+                                        <td>{this.formatDate(data.fecha)}</td>
                                         <td>{data.tipo}</td>
                                         <td>{data.numero}</td>
                                         <td>{data.motivo}</td>
