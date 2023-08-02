@@ -19,6 +19,12 @@ class ListaSalidaComponent extends Component{
         });
     }
 
+    formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const formattedDate = date.toLocaleDateString('en-CA');
+        return formattedDate.replace(/-/g, '/'); 
+    };
+
     render(){
         return(
             
@@ -43,7 +49,7 @@ class ListaSalidaComponent extends Component{
                                 {this.state.data.map((data) => (
                                     <tr key={data.id}>
                                         <td>{data.id}</td>
-                                        <td>{data.fecha}</td>
+                                        <td>{this.formatDate(data.fecha)}</td>
                                         <td>{data.tipo}</td>
                                         <td>{data.numero}</td>
                                         <td>{data.motivo}</td>

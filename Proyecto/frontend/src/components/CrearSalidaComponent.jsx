@@ -6,11 +6,14 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import swal from 'sweetalert';
 import SalidaService from "../services/SalidaService";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { format } from 'date-fns';
 
 export default function CrearSalidaComponent(props){
 
     const initialState = {
-        fecha: "",
+        fecha: null,
         tipo: "",
         numero: "",
         motivo: "",
@@ -19,9 +22,9 @@ export default function CrearSalidaComponent(props){
 
     const [input, setInput] = useState(initialState);
     
-    const changeFechaHandler = event => {
-        setInput({ ...input, fecha: event.target.value });
-        console.log(input.fecha);
+    const changeFechaHandler = (fecha) => {
+        setInput({ ...input, fecha: fecha });
+        console.log(input.fecha); 
     };
     const changeTipoHandler = event => {
         setInput({ ...input, tipo: event.target.value });
@@ -82,14 +85,20 @@ export default function CrearSalidaComponent(props){
                                 <hr></hr>
                                 <div className="container">
                                     <Form>
-                                        <Form.Group className="mb-3" controlId="fecha" value = {input.fecha} onChange={changeFechaHandler}>
-                                            <Form.Label>Fecha del retiro</Form.Label>
-                                            <Form.Control type="fecha" placeholder="Fecha de retiro del dinero" />
+                                    <Form.Label>Fecha de retiro</Form.Label>
+                                        <Form.Group  className="mb-3">
+                                            <DatePicker
+                                                selected={input.fecha}
+                                                onChange= {changeFechaHandler}
+                                                dateFormat="yyyy/MM/dd"
+                                                className="form-control"
+                                                showYearDropdown
+                                            />
                                         </Form.Group>
 
                                         <Form.Group className="mb-3" controlId="tipo" value = {input.tipo} onChange={changeTipoHandler}>
                                             <Form.Label>Tipo de documento</Form.Label>
-                                            <Form.Select aria-label="documento" size="lg">
+                                            <Form.Select aria-label="documento" size="lg" className="form-control2">
                                             <option>Seleccione el tipo de documento</option>
                                             <option value="Boleta">Boleta</option>
                                             <option value="Factura">Factura</option>
@@ -98,12 +107,21 @@ export default function CrearSalidaComponent(props){
 
                                         <Form.Group className="mb-3" controlId="numero" value = {input.numero} onChange={changeNumeroHandler}>
                                             <Form.Label>Numero del Documento</Form.Label>
-                                            <Form.Control type="numero" placeholder="Numero de documento XXXXX" />
+                                            <Form.Control type="numero" placeholder="Numero de documento XXX-XXXXXX" />
                                         </Form.Group>
 
                                         <Form.Group className="mb-3" controlId="motivo" value = {input.motivo} onChange={changeMotivoHandler}>
                                             <Form.Label>Motivo del retiro</Form.Label>
-                                            <Form.Control type="motivo" placeholder="Motivo del retido de dinero" />
+                                            <Form.Select aria-label="motivo" size="lg" className="form-control2">
+                                            <option>Seleccione el motivo del retiro</option>
+                                            <option value="Artículos de oficina">Artículos de oficina</option>
+                                            <option value="Productos de limpieza">Productos de limpieza</option>
+                                            <option value="Reparaciones">Reparaciones</option>
+                                            <option value="Combustible">Combustible</option>
+                                            <option value="Taxis">Taxis</option>
+                                            <option value="Alimentación">Alimentación</option>
+                                            <option value="Varios">Varios</option>
+                                            </Form.Select>
                                         </Form.Group>
 
                                         <Form.Group className="mb-3" controlId="salida" value = {input.salida} onChange={changeSalidaHandler}>
@@ -165,7 +183,7 @@ const Styles = styled.div`
     padding: 36px;
 }
 
-input[type=fecha],input[type=tipo],input[type=numero],input[type=motivo],input[type=salida] {
+input[type=numero],input[type=motivo],input[type=salida] {
     width: 100%;
     padding: 16px 8px;
     margin: 8px 0;
@@ -174,7 +192,26 @@ input[type=fecha],input[type=tipo],input[type=numero],input[type=motivo],input[t
     box-sizing: border-box;
 }
 
-Button {
+.form-control{
+    width: 310%;
+    padding: 14px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+
+}
+
+.form-control2{
+    width: 100%;
+    padding: 14px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.boton {
     background-color: #42bfbb;
     color: white;
     padding: 14px 0;

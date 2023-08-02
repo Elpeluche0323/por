@@ -6,11 +6,14 @@ import IngresoService from  '../services/IngresoService';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import swal from 'sweetalert';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { format } from 'date-fns';
 
 export default function CrearIngresoComponent(props){
 
     const initialState = {
-        fecha: "",
+        fecha: null,
         tipo: "Recibo",
         numero: "",
         motivo: "Ingreso a Caja",
@@ -19,10 +22,11 @@ export default function CrearIngresoComponent(props){
 
     const [input, setInput] = useState(initialState);
     
-    const changeFechaHandler = event => {
-        setInput({ ...input, fecha: event.target.value });
-        console.log(input.fecha);
+    const changeFechaHandler = (fecha) => {
+        setInput({ ...input, fecha: fecha });
+        console.log(input.fecha); 
     };
+
     const changeNumeroHandler = event => {
         setInput({ ...input, numero: event.target.value });
         console.log(input.numero);
@@ -74,11 +78,17 @@ export default function CrearIngresoComponent(props){
                                 <hr></hr>
                                 <div className="container">
                                     <Form>
-                                        <Form.Group className="mb-3" controlId="fecha" value = {input.fecha} onChange={changeFechaHandler}>
-                                            <Form.Label>Fecha del deposito</Form.Label>
-                                            <Form.Control type="fecha" placeholder="Fecha de deposito del dinero" />
-                                        </Form.Group>
-
+                                    <Form.Label>Fecha de deposito</Form.Label>
+                                        <Form.Group  className="mb-3">
+                                            <DatePicker
+                                                selected={input.fecha}
+                                                onChange= {changeFechaHandler}
+                                                dateFormat="yyyy/MM/dd"
+                                                className="form-control"
+                                                showYearDropdown
+                                            />
+                                            
+                                        </Form.Group >
                                         <Form.Group className="mb-3" controlId="numero" value = {input.numero} onChange={changeNumeroHandler}>
                                             <Form.Label>Numero del Documento</Form.Label>
                                             <Form.Control type="numero" placeholder="Numero de documento XXXXX" />
@@ -143,7 +153,7 @@ const Styles = styled.div`
     padding: 36px;
 }
 
-input[type=fecha], input[type=numero],input[type=ingreso] {
+input[type=numero],input[type=ingreso] {
     width: 100%;
     padding: 16px 8px;
     margin: 8px 0;
@@ -152,7 +162,17 @@ input[type=fecha], input[type=numero],input[type=ingreso] {
     box-sizing: border-box;
 }
 
-Button {
+.form-control{
+    width: 310%;
+    padding: 14px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+
+}
+
+.boton {
     background-color: #42bfbb;
     color: white;
     padding: 14px 0;

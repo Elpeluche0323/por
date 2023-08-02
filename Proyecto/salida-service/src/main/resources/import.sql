@@ -1,2 +1,2 @@
-insert into salida(id, fecha, tipo, numero, motivo, salida) values (1, "2023/07/2023", "Boleta","001-452357","Reparaciones", 50000.0);
-insert into salida(id, fecha, tipo, numero, motivo, salida) values (2, "2023/07/2023", "Factura","002-021448","Productos de limpieza", 30000.0);
+insert into salida(id, fecha, tipo, numero, motivo, salida) values (1, "2023-07-30", "Boleta","001-452357","Reparaciones", 50000.0);
+insert into salida(id, fecha, tipo, numero, motivo, salida) values (2, "2023-07-31", "Factura","002-021448","Productos de limpieza", 30000.0);

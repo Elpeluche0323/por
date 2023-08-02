@@ -4,6 +4,7 @@ import styled from "styled-components";
 import IngresoService from "../services/IngresoService";
 import FooterComponent from "./FooterComponent";
 
+
 class ListaIngresoComponent extends Component{
     constructor(props){
         super(props);
@@ -17,6 +18,12 @@ class ListaIngresoComponent extends Component{
             this.setState({ data: res.data});
         });
     }
+
+    formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const formattedDate = date.toLocaleDateString('en-CA');
+        return formattedDate.replace(/-/g, '/'); 
+    };
 
     render(){
         return(
@@ -42,7 +49,7 @@ class ListaIngresoComponent extends Component{
                                 {this.state.data.map((data) => (
                                     <tr key={data.id}>
                                         <td>{data.id}</td>
-                                        <td>{data.fecha}</td>
+                                        <td>{this.formatDate(data.fecha)}</td>
                                         <td>{data.tipo}</td>
                                         <td>{data.numero}</td>
                                         <td>{data.motivo}</td>

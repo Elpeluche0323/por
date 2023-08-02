@@ -11,6 +11,8 @@ function NavbarComponent(){
                 </div>
                 <nav>
                 </nav>
+                <a class="btn" href="/ingreso/lista-ingreso"><button>Ver historial de depositos</button></a>
+                <a class="btn-2" href="/salida/lista-salida"><button>Ver historial de retiros</button></a>
             </header>
             </NavStyle>
         </>

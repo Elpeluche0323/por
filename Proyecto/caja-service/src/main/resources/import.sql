@@ -1,3 +1,3 @@
-insert into caja(id, fecha, tipo, numero, motivo, ingreso, salida, saldo) values (1, "2023/06/2023", "Recibo","00045","Ingreso a Caja",200000.0,NULL , 200000.0);
-insert into caja(id, fecha, tipo, numero, motivo, ingreso, salida, saldo) values (2, "2023/07/2023", "Boleta","001-452357","Reparaciones",NULL , 50000.0, 150000.0);
-insert into caja(id, fecha, tipo, numero, motivo, ingreso, salida, saldo) values (3, "2023/07/2023", "Factura","002-021448","Productos de limpieza",NULL , 30000.0, 120000.0);
+insert into caja(id, fecha, tipo, numero, motivo, ingreso, salida, saldo) values (1, "2023-06-07", "Recibo","00045","Ingreso a Caja",200000.0,NULL , 200000.0);
+insert into caja(id, fecha, tipo, numero, motivo, ingreso, salida, saldo) values (2, "2023-07-30", "Boleta","001-452357","Reparaciones",NULL , 50000.0, 150000.0);
+insert into caja(id, fecha, tipo, numero, motivo, ingreso, salida, saldo) values (3, "2023-07-31", "Factura","002-021448","Productos de limpieza",NULL , 30000.0, 120000.0);

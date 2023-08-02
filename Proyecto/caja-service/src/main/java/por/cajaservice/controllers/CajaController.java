@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import por.cajaservice.entities.CajaEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import por.cajaservice.models.IngresoModel;
+import por.cajaservice.models.SalidaModel;
 import por.cajaservice.services.CajaService;
 import java.util.List;
 
@@ -15,11 +17,18 @@ public class CajaController {
     @Autowired
     CajaService cajaService;
 
-    @GetMapping("/nuevo-caja")
-    public String caja(){return "/nuevo-caja";}
+    @PostMapping("/nueva-caja")
+    public ResponseEntity<CajaEntity> crearNuevaCaja(@RequestBody IngresoModel ingreso) {
+        CajaEntity caja = cajaService.crearNuevaCaja(ingreso);
+        return ResponseEntity.ok(caja);
+    }
 
-    @PostMapping
-    public void guardarCaja(@RequestBody CajaEntity caja){cajaService.guardarCaja(caja);}
+    @PostMapping("/nueva-caja2")
+    public ResponseEntity<CajaEntity> crearNuevaCaja2(@RequestBody SalidaModel salida) {
+        CajaEntity caja = cajaService.crearNuevaCaja2(salida);
+        return ResponseEntity.ok(caja);
+    }
+
 
     @GetMapping("/lista-caja")
     public ResponseEntity<List<CajaEntity>> obtenerCaja(){
