@@ -34,7 +34,7 @@ public class CajaService {
         nuevaCaja.setIngreso(ingreso.getIngreso());
         nuevaCaja.setSalida(null);
         nuevaCaja.setSaldo(calcularSaldoActual(ingreso.getIngreso()));
-        cajaRepository.crearNuevaCaja(nuevaCaja);
+        cajaRepository.save(nuevaCaja);
         return nuevaCaja;
     }
 
@@ -48,7 +48,7 @@ public class CajaService {
         nuevaCaja.setIngreso(null);
         nuevaCaja.setSalida(salida.getSalida());
         nuevaCaja.setSaldo(calcularSaldoActual2(salida.getSalida()));
-        cajaRepository.crearNuevaCaja(nuevaCaja);
+        cajaRepository.save(nuevaCaja);
         return nuevaCaja;
     }
 

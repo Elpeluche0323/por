@@ -9,5 +9,4 @@ import java.util.List;
 
 @Repository
 public interface CajaRepository extends JpaRepository<CajaEntity, Integer> {
-    void crearNuevaCaja(CajaEntity nuevaCaja);
 }
